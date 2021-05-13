@@ -1,0 +1,12 @@
+﻿<columns units="px">
+  <column name="ACCOUNT" type="Text" />
+  <column name="PASSWORD" type="Text" />
+  <column name="PROXY USED" type="Text" />
+  <column name="COUNTRY" type="Text" />
+  <column name="FIRST NAME" type="Text" />
+  <column name="LAST NAME" type="Text" />
+  <column name="MAIN ACCOUNT" type="Text" />
+  <column name="ACCOUNT PASSWORD" type="Text" />
+  <column name="BIRTHDAY" type="Date" format="yyyy/M/d" nulltext="----/-/-" alignment="Right" />
+  <column name="PHONE" type="Text" />
+</columns>
