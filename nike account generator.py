@@ -16,6 +16,8 @@ with open('proxies.txt', 'r') as p:
 def generator():
     chrome_options = Options()
     chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
     chrome_options.add_argument('--proxy-server=%s' % proxy)
     broswer = webdriver.Chrome(chrome_options=chrome_options)
 
@@ -49,7 +51,7 @@ def generator():
 
     df_account = pd.read_csv('NikeAccount.csv')
     colNames = df_account.columns
-    new_account = [['0', email, password, proxy, 'gb', first_name, last_name, '', '', str(year)+'/'+str(month)+'/'+str(day), '']]
+    new_account = [[email, password, proxy, 'gb', first_name, last_name, '', '', str(year)+'/'+str(month)+'/'+str(day), '']]
     df_new_account = pd.DataFrame(data=new_account, columns=colNames)
     df_complete = pd.concat([df_account, df_new_account], axis=0)
     # df_complete.to_csv('NikeAccount.csv')
