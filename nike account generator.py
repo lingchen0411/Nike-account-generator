@@ -18,9 +18,15 @@ def generator():
     chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
     chrome_options.add_argument('--disable-blink-features=AutomationControlled')
     chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
-    chrome_options.add_argument('--proxy-server=%s' % proxy)
-    broswer = webdriver.Chrome(chrome_options=chrome_options)
+    # chrome_options.add_argument('--proxy-server=%s' % proxy)
+    broswer = webdriver.Chrome(chrome_options=chrome_options, executable_path='./chromedriver.exe')
+    # broswer = webdriver.Chrome(executable_path='./chromedriver.exe')
 
+    with open('stealth.min.js') as f:
+        js = f.read()
+    broswer.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {"source": js})
+
+    broswer.get('https://www.nike.com/')
     broswer.get('https://www.nike.com/gb/register')
     broswer.implicitly_wait(7)
 
@@ -29,11 +35,14 @@ def generator():
 
     email = ''.join(random.sample(string.ascii_letters, random.randint(6, 10))) + '@lingchen888.com'
     broswer.find_element_by_xpath('//*[@type="email"]').send_keys(email)
+    time.sleep(0.5)
     password = ''.join(random.sample(string.ascii_letters + string.digits, 12))
     broswer.find_element_by_xpath('//*[@type="password"]').send_keys(password)
     first_name = names.get_first_name()
+    time.sleep(0.5)
     broswer.find_element_by_xpath('//*[@placeholder="First Name"]').send_keys(first_name)
     last_name = names.get_last_name()
+    time.sleep(0.5)
     broswer.find_element_by_xpath('//*[@placeholder="Last Name"]').send_keys(last_name)
 
     actions = ActionChains(broswer)

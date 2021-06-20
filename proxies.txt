@@ -1,13 +1,3 @@
-gb.smartproxy.com:30001
-gb.smartproxy.com:30002
-gb.smartproxy.com:30003
-gb.smartproxy.com:30004
-gb.smartproxy.com:30005
-gb.smartproxy.com:30006
-gb.smartproxy.com:30007
-gb.smartproxy.com:30008
-gb.smartproxy.com:30009
-gb.smartproxy.com:30010
 gb.smartproxy.com:30011
 gb.smartproxy.com:30012
 gb.smartproxy.com:30013
